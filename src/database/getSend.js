@@ -17,22 +17,23 @@ async function getMysql(){
     return connection;
 }
 
-async function getUserById(username){
+
+async function storeDate(username,password){
     const ins = await getMysql();
-    const [rows,fields] = await ins.execute('select * from `user` where `username` = ?',[username])
-    // const [rows,fields] = await ins.execute('select * from `user`')
-    // console.log(rows)
-    return rows;
+
+    await ins.execute(`INSERT INTO user (username, password) VALUES ('${username}', '${password}')`) 
+    // const [rows,fields] = await ins.execute('select * from `user` where `username` = ?',[username]) 
+
+    return true
 }
 
 // async function text(){
 
-//     await getUserById('zkk1');
+//     await storeDate("zzk87","123");
 // }
 
 // text();
 
-
-module.exports = {
-    getUserById
+module.exports ={
+    storeDate
 }
