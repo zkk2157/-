@@ -9,9 +9,9 @@ server.use(koaBody({
     multipart: true,
     encoding: 'utf-8',
     formidable: {
-        uploadDir: Path.join(process.cwd()),  // 上传目录, 默认放置于启动程序的根目录
+        uploadDir: Path.join(`${process.cwd()}/picture/`),  // 上传目录, 默认放置于启动程序的根目录
         keepExtensions: true, // 保持文件的后缀
-        maxFieldsSize: 10485760 // 默认文件大小10mb
+        maxFieldsSize: 1024*1024*1024*2 // 默认文件大小2g
     }
 }))
 
